@@ -1,5 +1,7 @@
 
-[Reference - www.yoctoproject.org]
+[Reference - www.yoctoproject.org
+             www.docs.yoctoproject.org
+]
 
 Yocto Layer Model: - 
 ====================
