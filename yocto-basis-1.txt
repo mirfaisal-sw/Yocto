@@ -1,0 +1,75 @@
+
+[Reference - www.yoctoproject.org]
+
+Yocto Layer Model: - 
+====================
+Yocto project Layer Model is designed to support both collaboration and customization at the same time. Layers are
+repositories containing related sets of instructions which tell the build system what to do. Users can collaborate, 
+share, and reuse layers. Layers can contain changes to previous instructions or settings at any time.
+
+This powerful override capability is what allows you to customize previous collaborative or community supplied layers
+to suit your product requirements.
+
+Use different layers to logically separate information in your build. As an example, you could have a BSP layer, a GUI
+layer, a distro configuration, middleware, or an application. Putting your entire build into one layer limits and complicates
+future customization and reuse. Isolating information into layers, on the other hand, helps simplify future customizations
+and reuse. Use BSP layers from silicon vendors when possible.
+
+
+Yocto terminologies: -
+=====================
+
+1.) Configuration Files: 
+Files which hold global definitions of variables, user defined variables and hardware configuration information. They tell 
+the build system what to build and put into the image to support a particular platform.
+
+2.) Recipe: 
+Recipes are most common form of metadata. A recipe will contain a list of settings and tasks (instructions) for building 
+packages which are then used to build the binary image. A recipe describes where you get source code and which patches to
+apply. Recipes describe dependencies for libraries or for other recipes, as well as configuration and compilation options.
+They are stored in layers.
+
+3.) Layer: 
+A collection of related recipes. Layers allow you to consolidate related metadata to customize your build, and isolate 
+information for multiple architecture builds. Layers are hierarchical in their ability to override previous specifications.
+You can include any number of available layers from the Yocto Project and customize the build by adding your layers after them. 
+The Layer Index is searchable for layers within Yocto Project.
+
+4.) Metadata: 
+A key element of the Yocto Project is the meta-data which is used to construct a Linux distribution, contained in the files 
+that the build system parses when building an image. In general, Metadata includes recipes, configuration files and other 
+information refering to the build instructions themselves, as well as the data used to control what things get built and to 
+affect how they are built. The meta-data also includes commands and data used to indicate what versions of software are used, 
+and where they are obtained from, as well as changes or additions to the software itself (patches or auxiliary files) which 
+are used to fix bugs or customize the software for use in a particular situation. OpenEmbedded Core is an important set of 
+validated metadata.
+
+5.) OpenEmbedded-Core: 
+oe-core is meta-data comprised of foundation recipes, classes and associated files that are meant to be
+common among many different OpenEmbedded-derived systems, including the Yocto Project. It is a curated subset of an original
+repository developed by the OpenEmbedded community which has been pared down into a smaller, core set of continuously validated 
+recipes resulting in a tightly controlled and an quality-assured core set of recipes.
+
+6.) Poky: 
+A reference embedded distribution and a reference test configuration created to 1) provide a base level functional distro which 
+can be used to illustrate how to customize a distribution, 2) to test the Yocto Project components, Poky is used to validate 
+Yocto Project, and 3) as a vehicle for users to download Yocto Project. Poky is not a product level distro, but a good starting
+point for customization. Poky is an integration layer on top of oe-core.
+
+7.)Build System - "Bitbake": 
+A scheduler and execution engine which parses instructions (recipes) and configuration data. It then creates a dependency tree to 
+order the compilation, schedules the compilation of the included code, and finally, executes the building of the specified, custom 
+Linux image (distribution). BitBake is a make-like build tool. BitBake recipes specify how a particular package is built. They include
+all the package dependencies, source code locations, configuration, compilation, build, install and remove instructions. Recipes also
+store the metadata for the package in standard variables. Related recipes are consolidated into a layer. During the build process 
+dependencies are tracked and native or cross-compilation of the package is performed. As a first step in a cross-build setup, the 
+framework will attempt to create a cross-compiler toolchain (Extensible SDK) suited for the target platform.
+
+8.) Packages: 
+The output of the build system used to create your final image.
+
+9.) Extensible Software Development Kit (ESDK): 
+A custom SDK for application developers that allows them to incorporate their library and programming changes back into the image to 
+make their code available to other apps developers.
+
+Note: - The Yocto project build system (Bitbake and OE-Core metadata) is packaged with the reference distro (called Poky).
