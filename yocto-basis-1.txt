@@ -59,13 +59,13 @@ Yocto Project, and 3) as a vehicle for users to download Yocto Project. Poky is 
 point for customization. Poky is an integration layer on top of oe-core.
 
 7.)Build System - "Bitbake": 
-A scheduler and execution engine which parses instructions (recipes) and configuration data. It then creates a dependency tree to 
-order the compilation, schedules the compilation of the included code, and finally, executes the building of the specified, custom 
-Linux image (distribution). BitBake is a make-like build tool. BitBake recipes specify how a particular package is built. They include
-all the package dependencies, source code locations, configuration, compilation, build, install and remove instructions. Recipes also
-store the metadata for the package in standard variables. Related recipes are consolidated into a layer. During the build process 
-dependencies are tracked and native or cross-compilation of the package is performed. As a first step in a cross-build setup, the 
-framework will attempt to create a cross-compiler toolchain (Extensible SDK) suited for the target platform.
+A scheduler and execution engine which parses instructions (recipes) and configuration data. It then creates a dependency tree 
+to order the compilation, schedules the compilation of the included code, and finally, executes the building of the specified, 
+custom Linux image (distribution). BitBake is a make-like build tool. BitBake recipes specify how a particular package is built.
+They include all the package dependencies, source code locations, configuration, compilation, build, install and remove instructions. 
+Recipes also store the metadata for the package in standard variables. Related recipes are consolidated into a layer. During the
+build process dependencies are tracked and native or cross-compilation of the package is performed. As a first step in a cross-build
+setup, the framework will attempt to create a cross-compiler toolchain (Extensible SDK) suited for the target platform.
 
 8.) Packages: 
 The output of the build system used to create your final image.
@@ -75,3 +75,14 @@ A custom SDK for application developers that allows them to incorporate their li
 make their code available to other apps developers.
 
 Note: - The Yocto project build system (Bitbake and OE-Core metadata) is packaged with the reference distro (called Poky).
+
+build/conf/local.conf: -
+=========================
+This configuration file contains all the local user configurations for your build environment. The
+local.conf file contains documentation on the various configuration options. Any variable set here
+overrides any variable set elsewhere within the environment unless that variable is hard-coded within
+a file (e.g. by using '=' instead of '?='). Some variables are hard-coded for various reasons but these
+variables are relatively rare.
+
+=> This local.conf file is very important, it decides all configuration of yocto.
+
